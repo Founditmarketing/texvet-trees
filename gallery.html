@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Tex Vet Trees and Landscaping</title>
+    <meta name="description" content="Browse our project gallery — tree service, landscaping, hardscaping, turf, fencing, and decking work across Central to North Texas. Veteran owned and operated.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        black: '#0a0a0a',
+                        zinc: { 850: '#1f1f1f', 950: '#0c0c0c' },
+                        hubspot: '#ff7a59',
+                        hearth: '#274b92',
+                        'vet-gold': '#eec42d',
+                        'vet-gray': '#333333',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Shared nav/reveal */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .btn-swipe { position: relative; overflow: hidden; z-index: 1; }
+        .btn-swipe::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background-color: #ff7a59; transform: skewX(-20deg); transition: all 0.4s ease-in-out; z-index: -1; }
+        .btn-swipe:hover::before { left: 0; transform: skewX(0deg); }
+        .btn-swipe-white:hover { color: white !important; border-color: #ff7a59 !important; }
+
+        /* Gallery flip cards */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 320px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(-180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            background-color: #18181b;
+            color: white;
+            transform: rotateY(-180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+        }
+
+        .view-btn {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 1px solid white;
+            transition: all 0.3s;
+        }
+
+        .view-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* Lightbox */
+        #tv-lightbox {
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #tv-lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .close-lb {
+            position: absolute;
+            top: 20px; right: 30px;
+            font-size: 48px; color: white; cursor: pointer; line-height: 1;
+        }
+
+        .close-lb:hover { color: #ff7a59; }
+    </style>
+</head>
+<body class="bg-black text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden">
+
+    <!-- ===================== HEADER ===================== -->
+    <header x-data="{ open: false }" class="fixed w-full z-50 top-0 transition-all duration-300">
+
+        <!-- Top info bar — mobile -->
+        <div class="block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
+            <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+                <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white">
+                    <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
+                </a>
+                <span class="flex items-center gap-2 text-white">
+                    <i class="fa-solid fa-flag-usa text-gray-400"></i> Veteran Owned
+                </span>
+            </div>
+        </div>
+
+        <!-- Top info bar — desktop -->
+        <div class="hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
+            <div class="container mx-auto px-6 py-2 flex justify-start items-center gap-8">
+                <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
+                </a>
+                <span class="flex items-center gap-2 text-white/50">
+                    <i class="fa-solid fa-flag-usa text-gray-400"></i> Veteran Owned
+                </span>
+                <span class="flex items-center gap-2 text-white/50">
+                    <i class="fa-solid fa-shield-halved text-gray-400"></i> Fully Insured
+                </span>
+                <span class="flex items-center gap-2 text-white/50">
+                    <i class="fa-solid fa-clipboard-check text-gray-400"></i> Free Estimates
+                </span>
+            </div>
+        </div>
+
+        <!-- Main nav bar -->
+        <div class="bg-black/90 backdrop-blur-md border-b border-white/10">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+                <a href="./index.html" class="font-display font-bold text-xl tracking-tighter uppercase flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <span>Tex Vet <span class="text-gray-400">Trees</span></span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8 font-display uppercase tracking-wide text-sm text-gray-300">
+                    <a href="https://texvettrees.com/about/" class="hover:text-white transition-colors">About</a>
+
+                    <div x-data="{ dropdownOpen: false }" @mouseenter="dropdownOpen = true" @mouseleave="dropdownOpen = false" class="relative">
+                        <button class="hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                            Services <i class="fa-solid fa-chevron-down text-xs mt-0.5"></i>
+                        </button>
+                        <div x-show="dropdownOpen"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 translate-y-2"
+                             class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-white/10 shadow-xl rounded-sm z-50">
+                            <a href="./tree-service.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Tree Service</a>
+                            <a href="./landscaping.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Landscaping</a>
+                            <a href="./hardscaping.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Hardscaping</a>
+                            <a href="./turf.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Turf</a>
+                            <a href="./fencing.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Fencing</a>
+                            <a href="https://texvettrees.com/decking-2/" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors">Decking &amp; Patios</a>
+                        </div>
+                    </div>
+
+                    <a href="https://texvettrees.com/blog/" class="hover:text-white transition-colors">Blog</a>
+                    <a href="./gallery.html" class="text-hubspot transition-colors">Gallery</a>
+                    <a href="./reviews.html" class="hover:text-white transition-colors">Reviews</a>
+                    <a href="./work-with-us.html" class="hover:text-white transition-colors">Work With Us</a>
+                    <a href="https://app.gethearth.com/partners/tex-vet-trees-landscaping/jason/apply" target="_blank" class="text-hearth hover:text-white transition-colors font-bold">Financing</a>
+
+                    <a href="./get-a-quote.html" class="btn-swipe btn-swipe-white bg-white text-black px-6 py-2 font-bold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        Get A Quote
+                    </a>
+
+                    <a href="https://texvettrees.com/community-involvement/" class="hover:text-white transition-colors">Community</a>
+                </nav>
+
+                <button @click="open = true" class="md:hidden text-white text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile full-screen menu -->
+        <div x-show="open"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 -translate-y-full"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-300"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-full"
+             class="fixed inset-0 z-[60] bg-black text-white flex flex-col overflow-y-auto">
+
+            <div class="container mx-auto px-6 py-6 flex justify-between items-center border-b border-white/10">
+                <a href="./index.html" class="font-display font-bold text-xl uppercase">
+                    Tex Vet <span class="text-gray-400">Trees</span>
+                </a>
+                <button @click="open = false" class="text-3xl focus:outline-none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="container mx-auto px-6 py-10 flex flex-col gap-6">
+                <nav class="flex flex-col gap-6 font-display text-2xl uppercase tracking-wider">
+                    <a href="https://texvettrees.com/about/" class="hover:text-hubspot transition-colors">About Us</a>
+
+                    <div x-data="{ servicesOpen: false }">
+                        <button @click="servicesOpen = !servicesOpen" class="flex items-center justify-between w-full hover:text-hubspot transition-colors focus:outline-none">
+                            Services <i class="fa-solid text-lg" :class="servicesOpen ? 'fa-minus' : 'fa-plus'"></i>
+                        </button>
+                        <div x-show="servicesOpen" class="flex flex-col gap-4 pl-6 mt-4 border-l border-white/10 text-xl text-gray-400">
+                            <a href="./tree-service.html" class="hover:text-white transition-colors">Tree Service</a>
+                            <a href="./landscaping.html" class="hover:text-white transition-colors">Landscaping</a>
+                            <a href="./hardscaping.html" class="hover:text-white transition-colors">Hardscaping</a>
+                            <a href="./turf.html" class="hover:text-white transition-colors">Turf</a>
+                            <a href="./fencing.html" class="hover:text-white transition-colors">Fencing</a>
+                            <a href="https://texvettrees.com/decking-2/" class="hover:text-white transition-colors">Decking &amp; Patios</a>
+                        </div>
+                    </div>
+
+                    <a href="https://texvettrees.com/blog/" class="hover:text-hubspot transition-colors flex items-center justify-between">
+                        The Field Journal (Blog) <span class="text-[10px] bg-hubspot text-white px-2 py-0.5 rounded">NEW</span>
+                    </a>
+                    <a href="./gallery.html" class="text-hubspot transition-colors">Gallery</a>
+                    <a href="./reviews.html" class="hover:text-hubspot transition-colors">Reviews</a>
+                    <a href="./work-with-us.html" class="hover:text-hubspot transition-colors">Work With Us</a>
+                    <a href="https://texvettrees.com/community-involvement/" class="hover:text-hubspot transition-colors">Community Involvement</a>
+                    <a href="https://app.gethearth.com/partners/tex-vet-trees-landscaping/jason/apply" target="_blank" class="text-hearth hover:text-white transition-colors">Get Financing</a>
+                    <a href="./get-a-quote.html" class="text-hubspot font-bold">Get A Quote</a>
+                </nav>
+
+                <div class="mt-8 pt-8 border-t border-white/10 space-y-4">
+                    <a href="tel:2544475090" class="flex items-center gap-3 text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>(254) 447-5090</span>
+                    </a>
+                    <a href="mailto:contact@texvettrees.com" class="flex items-center gap-3 text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>contact@texvettrees.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ===================== END HEADER ===================== -->
+
+    <!-- ===================== PAGE HERO ===================== -->
+    <div class="relative flex items-end justify-center bg-black border-b border-white/10" style="padding-top: 112px;">
+        <div class="container mx-auto px-6 py-14 text-center">
+            <p class="inline-block border border-white/30 px-4 py-1 mb-4 text-xs uppercase tracking-[0.2em] text-gray-400 backdrop-blur-sm">Our Work</p>
+            <h1 class="font-display text-5xl md:text-7xl font-bold uppercase text-white mb-4">Project Gallery</h1>
+            <div class="w-24 h-1 bg-hubspot mx-auto mb-6"></div>
+            <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto">Every project tells a story. Hover over any photo to view it full-size.</p>
+        </div>
+    </div>
+
+    <!-- ===================== GALLERY ===================== -->
+    <div class="gallery-grid" id="main-gallery"></div>
+
+    <!-- Lightbox -->
+    <div id="tv-lightbox" onclick="this.style.display='none'">
+        <span class="close-lb">×</span>
+        <img id="lb-img" src="" alt="Gallery image full size">
+    </div>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="bg-black py-20 border-t border-white/10">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4 text-white">Ready to Transform Your Property?</h2>
+            <p class="text-gray-400 text-lg mb-8 font-light max-w-xl mx-auto">Get a free estimate from the veteran team that gets it done right.</p>
+            <a href="./get-a-quote.html" class="btn-swipe inline-block bg-white text-black px-10 py-4 font-display font-bold text-lg uppercase tracking-wider hover:text-white hover:shadow-2xl transition-all duration-300">
+                Get A Free Estimate
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+
+            <div class="text-center md:text-left flex items-center gap-2">
+                <img src="https://texvettrees.com/wp-content/uploads/2026/01/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees Logo" class="h-8 w-auto grayscale opacity-50">
+                <span class="font-display font-bold text-xl uppercase text-white">Tex Vet Trees</span>
+                <p class="text-gray-500 text-sm mt-1 ml-2">© 2026. All Rights Reserved.</p>
+            </div>
+
+            <div class="flex gap-6">
+                <a href="https://www.facebook.com/p/Tex-Vet-Trees-Milling-Hire-Texas-Veterans-61558534992589/" target="_blank" class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300" title="Facebook">
+                    <i class="fa-brands fa-facebook text-xl"></i>
+                </a>
+                <a href="https://www.yelp.com/biz/tex-vet-trees-and-landscaping-waco" target="_blank" class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300" title="Yelp">
+                    <i class="fa-brands fa-yelp text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/texvettrees/" target="_blank" class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300" title="Instagram">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+                <a href="https://www.google.com/maps/place/Tex+Vet+Trees+%26+Landscaping/@31.704561,-97.263625,17z" target="_blank" class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300" title="Google Maps">
+                    <i class="fa-brands fa-google text-xl"></i>
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 md:gap-8 text-center md:text-right items-center">
+                <div class="text-gray-500 text-sm font-sans">
+                    <i class="fa-solid fa-location-dot text-hubspot mr-2"></i>Business Location: 2080 Hamilton Drive, Waco, TX 76705
+                </div>
+                <a href="https://texvettrees.com/work-with-us/" class="text-gray-500 hover:text-hubspot text-sm transition-colors uppercase font-display tracking-wider">Work With Us</a>
+                <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors hover:underline">Privacy Policy</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Floating call button -->
+    <a href="tel:2544475090" class="fixed bottom-6 right-6 z-50 bg-hubspot hover:bg-[#ff8f73] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg transition-all duration-300 transform hover:scale-110 group">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-hubspot opacity-20 animate-ping"></span>
+        <i class="fa-solid fa-phone group-hover:rotate-12 transition-transform"></i>
+    </a>
+
+    <script>
+        const imageUrls = [
+            "https://texvettrees.com/wp-content/uploads/2026/01/469235845_122156927018284499_8107515471517870465_n.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/IMG_9016.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/IMG_9123.jpeg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/treeservice.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/6.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/fencing.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/decking.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/IMG_8966.jpeg",
+            "https://texvettrees.com/wp-content/uploads/2026/01/IMG_9109.jpeg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/Gemini_Generated_Image_8elezx8elezx8ele.png",
+            "https://texvettrees.com/wp-content/uploads/2026/03/Gemini_Generated_Image_d5n7lkd5n7lkd5n7.png",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9480.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9478.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9462.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9461.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9177.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9176.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9104.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9092.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/03/IMG_9091.jpg",
+            "https://texvettrees.com/wp-content/uploads/2026/02/IMG_9806.jpg"
+        ];
+
+        const container = document.getElementById('main-gallery');
+
+        imageUrls.forEach(url => {
+            const card = document.createElement('div');
+            card.className = 'flip-card reveal';
+            card.innerHTML = `
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="${url}" loading="lazy" alt="Tex Vet Trees project photo">
+                    </div>
+                    <div class="flip-card-back" onclick="openTVLightbox('${url}')">
+                        <div class="view-btn">View Full Size</div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        function openTVLightbox(url) {
+            document.getElementById('lb-img').src = url;
+            document.getElementById('tv-lightbox').style.display = 'flex';
+        }
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 300);
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get A Quote | Tex Vet Trees and Landscaping</title>
+    <meta name="description" content="Request a free estimate from Tex Vet Trees and Landscaping — veteran-owned tree service, landscaping, hardscaping, turf, and fencing in Central to North Texas.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        black: '#0a0a0a',
+                        zinc: { 900: '#18181b', 950: '#0c0c0c' },
+                        hubspot: '#ff7a59',
+                        'ice-blue': '#f4f8fa',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-black text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden">
+
+    <!-- Minimal top nav strip — back link only -->
+    <div class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 px-6 py-4 flex items-center justify-between">
+        <a href="./index.html" class="font-display font-bold text-lg uppercase tracking-tighter hover:opacity-70 transition-opacity flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left text-sm text-gray-400"></i>
+            Tex Vet <span class="text-gray-400">Trees</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6 font-display uppercase tracking-wide text-sm text-gray-400">
+            <a href="./tree-service.html" class="hover:text-white transition-colors">Services</a>
+            <a href="./gallery.html" class="hover:text-white transition-colors">Gallery</a>
+            <a href="./reviews.html" class="hover:text-white transition-colors">Reviews</a>
+            <a href="tel:2544475090" class="text-hubspot hover:text-white transition-colors font-bold">
+                <i class="fa-solid fa-phone mr-1"></i> (254) 447-5090
+            </a>
+        </div>
+    </div>
+
+    <!-- ===================== SPLIT LAYOUT ===================== -->
+    <div class="w-full flex flex-col lg:flex-row min-h-screen">
+
+        <!-- LEFT — Info panel -->
+        <div class="w-full lg:w-1/2 p-8 lg:p-[100px] flex flex-col justify-start bg-zinc-900 border-r border-white/10 pt-24 lg:pt-[150px]">
+            <div class="reveal">
+                <img src="https://texvettrees.com/wp-content/uploads/2026/01/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees" class="w-40 mb-8 opacity-100">
+
+                <h1 class="font-display text-5xl md:text-6xl font-bold uppercase mb-6 leading-tight text-white drop-shadow-lg">
+                    Get A Quote <span class="text-hubspot">Today</span>
+                </h1>
+
+                <p class="text-gray-400 text-lg leading-relaxed mb-8 font-light border-l-4 border-hubspot pl-6">
+                    Ready to start your project? Fill out the form, and our team will get back to you with a military-grade estimate.
+                </p>
+
+                <div class="space-y-8 mt-12">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 rounded-full bg-hubspot text-white flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform flex-shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase font-bold text-gray-500 tracking-widest mb-1">Call Us Directly</p>
+                            <a href="tel:2544475090" class="text-2xl font-bold text-white hover:text-hubspot transition-colors">(254) 447-5090</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 rounded-full bg-hubspot text-white flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform flex-shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase font-bold text-gray-500 tracking-widest mb-1">Email Us</p>
+                            <a href="mailto:texvettrees@gmail.com" class="text-xl font-bold text-white hover:text-hubspot transition-colors">texvettrees@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust badges -->
+                <div class="mt-16 pt-10 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <i class="fa-solid fa-flag-usa text-hubspot text-2xl mb-2"></i>
+                        <p class="text-xs uppercase tracking-widest text-gray-400 font-display">Veteran Owned</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shield-halved text-hubspot text-2xl mb-2"></i>
+                        <p class="text-xs uppercase tracking-widest text-gray-400 font-display">Fully Insured</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-check text-hubspot text-2xl mb-2"></i>
+                        <p class="text-xs uppercase tracking-widest text-gray-400 font-display">Free Estimates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT — HubSpot form iframe -->
+        <div class="w-full lg:w-1/2 bg-ice-blue relative overflow-hidden flex flex-col justify-start pt-24 lg:pt-[72px]">
+            <div id="hubspot-form-container" class="w-full h-full min-h-[900px]">
+                <iframe
+                    src="https://share-na2.hsforms.com/1KRGM0q_oRFqbBENVRwzGMg41nkuy"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    style="border:none; width: 100%; height: 100%; min-height: 900px; background: #f4f8fa;"
+                    allowtransparency="true"
+                    title="Get A Quote Form">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating call button -->
+    <a href="tel:2544475090" class="fixed bottom-6 right-6 z-50 bg-hubspot hover:bg-[#ff8f73] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg transition-all duration-300 transform hover:scale-110 group">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-hubspot opacity-20 animate-ping"></span>
+        <i class="fa-solid fa-phone group-hover:rotate-12 transition-transform"></i>
+    </a>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
