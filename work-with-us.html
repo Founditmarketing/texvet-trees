@@ -67,7 +67,7 @@
     <header x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = window.scrollY > 10" class="fixed w-full z-50 top-0 transition-all duration-300">
 
         <!-- Top info bar — mobile -->
-        <div x-show="!scrolled" x-transition class="block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
+        <div x-show="!scrolled" x-transition class="w-full block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
             <div class="container mx-auto px-4 py-2 flex justify-between items-center">
                 <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white">
                     <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
@@ -79,7 +79,7 @@
         </div>
 
         <!-- Top info bar — desktop -->
-        <div x-show="!scrolled" x-transition class="hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
+        <div x-show="!scrolled" x-transition class="w-full hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
             <div class="container mx-auto px-6 py-2 flex justify-start items-center gap-8">
                 <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white transition-colors">
                     <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
@@ -97,7 +97,7 @@
         </div>
 
         <!-- Main nav bar -->
-        <div class="bg-black/90 backdrop-blur-md border-b border-white/10">
+        <div class="w-full bg-black/90 backdrop-blur-md border-b border-white/10">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
 
                 <a href="./index.html" class="font-display font-bold text-xl tracking-tighter uppercase flex items-center gap-2 hover:opacity-80 transition-opacity">
