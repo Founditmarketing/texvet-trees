@@ -60,10 +60,10 @@
 <body class="bg-black text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden">
 
     <!-- ===================== HEADER ===================== -->
-    <header x-data="{ open: false }" class="fixed w-full z-50 top-0 transition-all duration-300">
+    <header x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = window.scrollY > 10" class="fixed w-full z-50 top-0 transition-all duration-300">
 
         <!-- Top info bar — mobile -->
-        <div class="block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
+        <div x-show="!scrolled" x-transition class="block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
             <div class="container mx-auto px-4 py-2 flex justify-between items-center">
                 <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white">
                     <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Top info bar — desktop -->
-        <div class="hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
+        <div x-show="!scrolled" x-transition class="hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
             <div class="container mx-auto px-6 py-2 flex justify-start items-center gap-8">
                 <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white transition-colors">
                     <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
@@ -101,7 +101,7 @@
                 </a>
 
                 <nav class="hidden md:flex items-center gap-8 font-display uppercase tracking-wide text-sm text-gray-300">
-                    <a href="https://texvettrees.com/about/" class="hover:text-white transition-colors">About</a>
+                    <a href="./about.html" class="hover:text-white transition-colors">About</a>
 
                     <div x-data="{ dropdownOpen: false }" @mouseenter="dropdownOpen = true" @mouseleave="dropdownOpen = false" class="relative">
                         <button class="hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
@@ -124,7 +124,7 @@
                         </div>
                     </div>
 
-                    <a href="https://texvettrees.com/blog/" class="hover:text-white transition-colors">Blog</a>
+                    <a href="./blog.html" class="hover:text-white transition-colors">Blog</a>
                     <a href="./gallery.html" class="hover:text-white transition-colors">Gallery</a>
                     <a href="./reviews.html" class="hover:text-white transition-colors">Reviews</a>
                     <a href="./work-with-us.html" class="hover:text-white transition-colors">Work With Us</a>
@@ -134,7 +134,7 @@
                         Get A Quote
                     </a>
 
-                    <a href="https://texvettrees.com/community-involvement/" class="hover:text-white transition-colors">Community</a>
+                    <a href="./community.html" class="hover:text-white transition-colors">Community</a>
                 </nav>
 
                 <button @click="open = true" class="md:hidden text-white text-2xl focus:outline-none">
@@ -164,7 +164,7 @@
 
             <div class="container mx-auto px-6 py-10 flex flex-col gap-6">
                 <nav class="flex flex-col gap-6 font-display text-2xl uppercase tracking-wider">
-                    <a href="https://texvettrees.com/about/" class="hover:text-hubspot transition-colors">About Us</a>
+                    <a href="./about.html" class="hover:text-hubspot transition-colors">About Us</a>
 
                     <div x-data="{ servicesOpen: false }">
                         <button @click="servicesOpen = !servicesOpen" class="flex items-center justify-between w-full hover:text-hubspot transition-colors focus:outline-none">
@@ -180,13 +180,13 @@
                         </div>
                     </div>
 
-                    <a href="https://texvettrees.com/blog/" class="hover:text-hubspot transition-colors flex items-center justify-between">
+                    <a href="./blog.html" class="hover:text-hubspot transition-colors flex items-center justify-between">
                         The Field Journal (Blog) <span class="text-[10px] bg-hubspot text-white px-2 py-0.5 rounded">NEW</span>
                     </a>
                     <a href="./gallery.html" class="hover:text-hubspot transition-colors">Gallery</a>
                     <a href="./reviews.html" class="hover:text-hubspot transition-colors">Reviews</a>
                     <a href="./work-with-us.html" class="hover:text-hubspot transition-colors">Work With Us</a>
-                    <a href="https://texvettrees.com/community-involvement/" class="hover:text-hubspot transition-colors">Community Involvement</a>
+                    <a href="./community.html" class="hover:text-hubspot transition-colors">Community Involvement</a>
                     <a href="https://app.gethearth.com/partners/tex-vet-trees-landscaping/jason/apply" target="_blank" class="text-hearth hover:text-white transition-colors">Get Financing</a>
                     <a href="./get-a-quote.html" class="text-hubspot font-bold">Get A Quote</a>
                 </nav>
@@ -295,7 +295,7 @@
                 <div class="text-gray-500 text-sm font-sans">
                     <i class="fa-solid fa-location-dot text-hubspot mr-2"></i>Business Location: 2080 Hamilton Drive, Waco, TX 76705
                 </div>
-                <a href="https://texvettrees.com/work-with-us/" class="text-gray-500 hover:text-hubspot text-sm transition-colors uppercase font-display tracking-wider">Work With Us</a>
+                <a href="./work-with-us.html" class="text-gray-500 hover:text-hubspot text-sm transition-colors uppercase font-display tracking-wider">Work With Us</a>
                 <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors hover:underline">Privacy Policy</a>
             </div>
 

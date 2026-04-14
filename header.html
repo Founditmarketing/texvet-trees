@@ -59,9 +59,9 @@
 </head>
 <body class="bg-black text-white font-sans antialiased">
 
-    <header x-data="{ open: false }" class="fixed w-full z-50 top-0 transition-all duration-300">
+    <header x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = window.scrollY > 10" class="fixed w-full z-50 top-0 transition-all duration-300">
         
-        <div class="block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
+        <div x-show="!scrolled" x-transition class="block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
             <div class="container mx-auto px-4 py-2 flex justify-between items-center">
                 <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white">
                     <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div class="hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
+        <div x-show="!scrolled" x-transition class="hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
             <div class="container mx-auto px-6 py-2 flex justify-start items-center gap-8">
                 <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white transition-colors">
                     <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
@@ -92,12 +92,12 @@
         <div class="bg-black/90 backdrop-blur-md border-b border-white/10">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 
-                <a href="https://texvettrees.com/" class="font-display font-bold text-xl tracking-tighter uppercase flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <a href="./index.html" class="font-display font-bold text-xl tracking-tighter uppercase flex items-center gap-2 hover:opacity-80 transition-opacity">
                     <span>Tex Vet <span class="text-gray-400">Trees</span></span>
                 </a>
 
                 <nav class="hidden md:flex items-center gap-8 font-display uppercase tracking-wide text-sm text-gray-300">
-                    <a href="https://texvettrees.com/about/" class="nav-link hover:text-white transition-colors">About</a>
+                    <a href="./about.html" class="nav-link hover:text-white transition-colors">About</a>
                     
                     <div x-data="{ dropdownOpen: false }" @mouseenter="dropdownOpen = true" @mouseleave="dropdownOpen = false" class="relative">
                         <button class="nav-link hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
@@ -111,28 +111,28 @@
                              x-transition:leave-start="opacity-100 translate-y-0"
                              x-transition:leave-end="opacity-0 translate-y-2"
                              class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-white/10 shadow-xl rounded-sm z-50">
-                            <a href="https://texvettrees.com/tree-service/" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Tree Service</a>
-                            <a href="https://texvettrees.com/landscaping-2/" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Landscaping</a>
-                            <a href="https://texvettrees.com/hardscaping/" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Hardscaping</a>
-                            <a href="https://texvettrees.com/turf/" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Turf</a>
-                            <a href="https://texvettrees.com/fencing-2/" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Fencing</a>
+                            <a href="./tree-service.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Tree Service</a>
+                            <a href="./landscaping.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Landscaping</a>
+                            <a href="./hardscaping.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Hardscaping</a>
+                            <a href="./turf.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Turf</a>
+                            <a href="./fencing.html" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Fencing</a>
                             <a href="https://texvettrees.com/decking-2/" class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors">Decking & Patios</a>
                         </div>
                     </div>
 
-                    <a href="https://texvettrees.com/blog/" class="nav-link hover:text-white transition-colors">Blog</a>
+                    <a href="./blog.html" class="nav-link hover:text-white transition-colors">Blog</a>
                     
-                    <a href="https://texvettrees.com/gallery/" class="nav-link hover:text-white transition-colors">Gallery</a>
-                    <a href="https://texvettrees.com/reviews/" class="nav-link hover:text-white transition-colors">Reviews</a>
-                    <a href="https://texvettrees.com/work-with-us/" class="nav-link hover:text-white transition-colors">Work With Us</a>
+                    <a href="./gallery.html" class="nav-link hover:text-white transition-colors">Gallery</a>
+                    <a href="./reviews.html" class="nav-link hover:text-white transition-colors">Reviews</a>
+                    <a href="./work-with-us.html" class="nav-link hover:text-white transition-colors">Work With Us</a>
                     
                     <a href="https://app.gethearth.com/partners/tex-vet-trees-landscaping/jason/apply" target="_blank" class="nav-link text-hearth hover:text-white transition-colors font-bold">Financing</a>
                     
-                    <a href="https://texvettrees.com/get-a-quote/" class="btn-swipe btn-swipe-white bg-white text-black px-6 py-2 font-bold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <a href="./get-a-quote.html" class="btn-swipe btn-swipe-white bg-white text-black px-6 py-2 font-bold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                         Get A Quote
                     </a>
 
-                    <a href="https://texvettrees.com/community-involvement/" class="nav-link hover:text-white transition-colors">Community</a>
+                    <a href="./community.html" class="nav-link hover:text-white transition-colors">Community</a>
                 </nav>
 
                 <button @click="open = true" class="md:hidden text-white text-2xl focus:outline-none">
@@ -151,7 +151,7 @@
              class="fixed inset-0 z-[60] bg-black text-white flex flex-col overflow-y-auto">
             
             <div class="container mx-auto px-6 py-6 flex justify-between items-center border-b border-white/10">
-                <a href="https://texvettrees.com/" class="font-display font-bold text-xl uppercase">
+                <a href="./index.html" class="font-display font-bold text-xl uppercase">
                     Tex Vet <span class="text-gray-400">Trees</span>
                 </a>
                 
@@ -162,33 +162,33 @@
 
             <div class="container mx-auto px-6 py-10 flex flex-col gap-6">
                 <nav class="flex flex-col gap-6 font-display text-2xl uppercase tracking-wider">
-                    <a href="https://texvettrees.com/about/" class="hover:text-hubspot transition-colors">About Us</a>
+                    <a href="./about.html" class="hover:text-hubspot transition-colors">About Us</a>
                     
                     <div x-data="{ servicesOpen: false }">
                         <button @click="servicesOpen = !servicesOpen" class="flex items-center justify-between w-full hover:text-hubspot transition-colors focus:outline-none">
                             Services <i class="fa-solid text-lg" :class="servicesOpen ? 'fa-minus' : 'fa-plus'"></i>
                         </button>
                         <div x-show="servicesOpen" class="flex flex-col gap-4 pl-6 mt-4 border-l border-white/10 text-xl text-gray-400">
-                            <a href="https://texvettrees.com/tree-service/" class="hover:text-white transition-colors">Tree Service</a>
-                            <a href="https://texvettrees.com/landscaping-2/" class="hover:text-white transition-colors">Landscaping</a>
-                            <a href="https://texvettrees.com/hardscaping/" class="hover:text-white transition-colors">Hardscaping</a>
-                            <a href="https://texvettrees.com/turf/" class="hover:text-white transition-colors">Turf</a>
-                            <a href="https://texvettrees.com/fencing-2/" class="hover:text-white transition-colors">Fencing</a>
+                            <a href="./tree-service.html" class="hover:text-white transition-colors">Tree Service</a>
+                            <a href="./landscaping.html" class="hover:text-white transition-colors">Landscaping</a>
+                            <a href="./hardscaping.html" class="hover:text-white transition-colors">Hardscaping</a>
+                            <a href="./turf.html" class="hover:text-white transition-colors">Turf</a>
+                            <a href="./fencing.html" class="hover:text-white transition-colors">Fencing</a>
                             <a href="https://texvettrees.com/decking-2/" class="hover:text-white transition-colors">Decking & Patios</a>
                         </div>
                     </div>
 
-                    <a href="https://texvettrees.com/blog/" class="hover:text-hubspot transition-colors flex items-center justify-between">
+                    <a href="./blog.html" class="hover:text-hubspot transition-colors flex items-center justify-between">
                         The Field Journal (Blog) <span class="text-[10px] bg-hubspot text-white px-2 py-0.5 rounded">NEW</span>
                     </a>
 
-                    <a href="https://texvettrees.com/gallery/" class="hover:text-hubspot transition-colors">Gallery</a>
-                    <a href="https://texvettrees.com/reviews/" class="hover:text-hubspot transition-colors">Reviews</a>
-                    <a href="https://texvettrees.com/work-with-us/" class="hover:text-hubspot transition-colors">Work With Us</a>
-                    <a href="https://texvettrees.com/community-involvement/" class="hover:text-hubspot transition-colors">Community Involvement</a>
+                    <a href="./gallery.html" class="hover:text-hubspot transition-colors">Gallery</a>
+                    <a href="./reviews.html" class="hover:text-hubspot transition-colors">Reviews</a>
+                    <a href="./work-with-us.html" class="hover:text-hubspot transition-colors">Work With Us</a>
+                    <a href="./community.html" class="hover:text-hubspot transition-colors">Community Involvement</a>
                     
                     <a href="https://app.gethearth.com/partners/tex-vet-trees-landscaping/jason/apply" target="_blank" class="text-hearth hover:text-white transition-colors">Get Financing</a>
-                    <a href="https://texvettrees.com/get-a-quote/" class="text-hubspot font-bold">Get A Quote</a>
+                    <a href="./get-a-quote.html" class="text-hubspot font-bold">Get A Quote</a>
                 </nav>
 
                 <div class="mt-8 pt-8 border-t border-white/10 space-y-4">

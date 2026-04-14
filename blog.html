@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Field Journal | Tex Vet Trees and Landscaping</title>
+    <meta name="description"
+        content="Stories of service, growth, and community from Tex Vet Trees and Landscaping — veteran-owned tree service and landscaping in Central to North Texas.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        black: '#0a0a0a',
+                        zinc: { 850: '#1f1f1f', 950: '#0c0c0c' },
+                        hubspot: '#ff7a59',
+                        hearth: '#274b92',
+                        'vet-gold': '#eec42d',
+                        'vet-gray': '#333333',
+                    },
+                    backgroundImage: {
+                        'blog-bg': "url('https://texvettrees.com/wp-content/uploads/2026/02/Screenshot-2026-02-03-at-7.49.20-PM.png')",
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-swipe {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-swipe::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #ff7a59;
+            transform: skewX(-20deg);
+            transition: all 0.4s ease-in-out;
+            z-index: -1;
+        }
+
+        .btn-swipe:hover::before {
+            left: 0;
+            transform: skewX(0deg);
+        }
+
+        .btn-swipe-white:hover {
+            color: white !important;
+            border-color: #ff7a59 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden">
+
+    <!-- ===================== HEADER ===================== -->
+    <header x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = window.scrollY > 10"
+        class="fixed w-full z-50 top-0 transition-all duration-300">
+
+        <!-- Top info bar — mobile -->
+        <div x-show="!scrolled" x-transition
+            class="block md:hidden bg-zinc-950 border-b border-white/10 text-gray-400 text-[10px] font-display tracking-widest uppercase">
+            <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+                <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white">
+                    <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
+                </a>
+                <span class="flex items-center gap-2 text-white">
+                    <i class="fa-solid fa-flag-usa text-gray-400"></i> Veteran Owned
+                </span>
+            </div>
+        </div>
+
+        <!-- Top info bar — desktop -->
+        <div x-show="!scrolled" x-transition
+            class="hidden md:block bg-zinc-950 border-b border-white/10 text-gray-400 text-xs font-display tracking-widest uppercase">
+            <div class="container mx-auto px-6 py-2 flex justify-start items-center gap-8">
+                <a href="tel:2544475090" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i class="fa-solid fa-phone text-gray-400"></i> (254) 447-5090
+                </a>
+                <span class="flex items-center gap-2 text-white/50">
+                    <i class="fa-solid fa-flag-usa text-gray-400"></i> Veteran Owned
+                </span>
+                <span class="flex items-center gap-2 text-white/50">
+                    <i class="fa-solid fa-shield-halved text-gray-400"></i> Fully Insured
+                </span>
+                <span class="flex items-center gap-2 text-white/50">
+                    <i class="fa-solid fa-clipboard-check text-gray-400"></i> Free Estimates
+                </span>
+            </div>
+        </div>
+
+        <!-- Main nav bar -->
+        <div class="bg-black/90 backdrop-blur-md border-b border-white/10">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+                <a href="./index.html"
+                    class="font-display font-bold text-xl tracking-tighter uppercase flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <span>Tex Vet <span class="text-gray-400">Trees</span></span>
+                </a>
+
+                <nav
+                    class="hidden md:flex items-center gap-8 font-display uppercase tracking-wide text-sm text-gray-300">
+                    <a href="./about.html" class="hover:text-white transition-colors">About</a>
+
+                    <div x-data="{ dropdownOpen: false }" @mouseenter="dropdownOpen = true"
+                        @mouseleave="dropdownOpen = false" class="relative">
+                        <button class="hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                            Services <i class="fa-solid fa-chevron-down text-xs mt-0.5"></i>
+                        </button>
+                        <div x-show="dropdownOpen" x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 translate-y-2"
+                            class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-white/10 shadow-xl rounded-sm z-50">
+                            <a href="./tree-service.html"
+                                class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Tree
+                                Service</a>
+                            <a href="./landscaping.html"
+                                class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Landscaping</a>
+                            <a href="./hardscaping.html"
+                                class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Hardscaping</a>
+                            <a href="./turf.html"
+                                class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Turf</a>
+                            <a href="./fencing.html"
+                                class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors border-b border-white/5">Fencing</a>
+                            <a href="https://texvettrees.com/decking-2/"
+                                class="block px-4 py-3 text-sm hover:bg-zinc-800 hover:text-hubspot transition-colors">Decking
+                                &amp; Patios</a>
+                        </div>
+                    </div>
+
+                    <a href="./blog.html" class="text-hubspot transition-colors">Blog</a>
+                    <a href="./gallery.html" class="hover:text-white transition-colors">Gallery</a>
+                    <a href="./reviews.html" class="hover:text-white transition-colors">Reviews</a>
+                    <a href="./work-with-us.html" class="hover:text-white transition-colors">Work With Us</a>
+                    <a href="https://app.gethearth.com/partners/tex-vet-trees-landscaping/jason/apply" target="_blank"
+                        class="text-hearth hover:text-white transition-colors font-bold">Financing</a>
+
+                    <a href="./get-a-quote.html"
+                        class="btn-swipe btn-swipe-white bg-white text-black px-6 py-2 font-bold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        Get A Quote
+                    </a>
+
+                    <a href="./community.html" class="hover:text-white transition-colors">Community</a>
+                </nav>
+
+                <button @click="open = true" class="md:hidden text-white text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile full-screen menu -->
+        <div x-show="open" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-full" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-full"
+            class="fixed inset-0 z-[60] bg-black text-white flex flex-col overflow-y-auto">
+
+            <div class="container mx-auto px-6 py-6 flex justify-between items-center border-b border-white/10">
+                <a href="./index.html" class="font-display font-bold text-xl uppercase">
+                    Tex Vet <span class="text-gray-400">Trees</span>
+                </a>
+                <button @click="open = false" class="text-3xl focus:outline-none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="container mx-auto px-6 py-10 flex flex-col gap-6">
+                <nav class="flex flex-col gap-6 font-display text-2xl uppercase tracking-wider">
+                    <a href="./about.html" class="hover:text-hubspot transition-colors">About Us</a>
+
+                    <div x-data="{ servicesOpen: false }">
+                        <button @click="servicesOpen = !servicesOpen"
+                            class="flex items-center justify-between w-full hover:text-hubspot transition-colors focus:outline-none">
+                            Services <i class="fa-solid text-lg" :class="servicesOpen ? 'fa-minus' : 'fa-plus'"></i>
+                        </button>
+                        <div x-show="servicesOpen"
+                            class="flex flex-col gap-4 pl-6 mt-4 border-l border-white/10 text-xl text-gray-400">
+                            <a href="./tree-service.html" class="hover:text-white transition-colors">Tree Service</a>
+                            <a href="./landscaping.html" class="hover:text-white transition-colors">Landscaping</a>
+                            <a href="./hardscaping.html" class="hover:text-white transition-colors">Hardscaping</a>
+                            <a href="./turf.html" class="hover:text-white transition-colors">Turf</a>
+                            <a href="./fencing.html" class="hover:text-white transition-colors">Fencing</a>
+                            <a href="https://texvettrees.com/decking-2/"
+                                class="hover:text-white transition-colors">Decking &amp; Patios</a>
+                        </div>
+                    </div>
+
+                    <a href="./blog.html" class="text-hubspot transition-colors flex items-center justify-between">
+                        The Field Journal (Blog) <span
+                            class="text-[10px] bg-hubspot text-white px-2 py-0.5 rounded">NEW</span>
+                    </a>
+                    <a href="./gallery.html" class="hover:text-hubspot transition-colors">Gallery</a>
+                    <a href="./reviews.html" class="hover:text-hubspot transition-colors">Reviews</a>
+                    <a href="./work-with-us.html" class="hover:text-hubspot transition-colors">Work With Us</a>
+                    <a href="./community.html" class="hover:text-hubspot transition-colors">Community Involvement</a>
+                    <a href="https://app.gethearth.com/partners/tex-vet-trees-landscaping/jason/apply" target="_blank"
+                        class="text-hearth hover:text-white transition-colors">Get Financing</a>
+                    <a href="./get-a-quote.html" class="text-hubspot font-bold">Get A Quote</a>
+                </nav>
+
+                <div class="mt-8 pt-8 border-t border-white/10 space-y-4">
+                    <a href="tel:2544475090" class="flex items-center gap-3 text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>(254) 447-5090</span>
+                    </a>
+                    <a href="mailto:contact@texvettrees.com"
+                        class="flex items-center gap-3 text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>contact@texvettrees.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ===================== END HEADER ===================== -->
+
+    <!-- ===================== HERO ===================== -->
+    <div class="relative h-[40vh] flex items-center justify-center bg-blog-bg bg-cover bg-center bg-fixed"
+        style="padding-top: 112px;">
+        <div class="absolute inset-0 bg-black/75"></div>
+        <div class="relative z-10 text-center px-6">
+            <h1 class="reveal font-display text-5xl md:text-7xl font-bold uppercase mb-4 text-white drop-shadow-2xl">The
+                Field Journal</h1>
+            <div class="reveal w-24 h-1 bg-hubspot mx-auto mb-6"></div>
+            <p class="reveal font-light text-xl md:text-2xl text-gray-200 tracking-wide uppercase">Stories of Service,
+                Growth, and Community</p>
+        </div>
+    </div>
+
+    <!-- ===================== CONTENT ===================== -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6 max-w-6xl">
+
+            <!-- Featured article -->
+            <article class="reveal flex flex-col md:flex-row gap-12 items-center mb-24">
+
+                <!-- Text -->
+                <div class="md:w-3/5 order-2 md:order-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="bg-hubspot text-white text-xs font-bold uppercase px-3 py-1 tracking-widest">Community
+                            Spotlight</span>
+                        <span class="text-gray-500 text-sm">February 2026</span>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-5xl font-bold uppercase mb-6 text-white leading-tight">
+                        Hiring Our Veterans: <span class="text-hubspot">A Story From The Trees</span>
+                    </h2>
+                    <div class="space-y-4 text-gray-400 text-lg leading-relaxed font-light">
+                        <p>
+                            Transitioning from military service to civilian life isn't just about finding a job; it's
+                            about finding a new mission. At Tex Vet Trees, we believe the discipline, resilience, and
+                            teamwork forged in the armed forces are the exact qualities needed to master the heights of
+                            arboriculture.
+                        </p>
+                        <p>
+                            Recently featured on Fox44 News, our team shared how we are bridging the gap for McLennan
+                            County veterans. By providing hands-on training and a supportive, brotherhood-style
+                            environment, we help former service members trade their combat gear for climbing harnesses.
+                        </p>
+                        <p>
+                            "It's about more than just trimming trees," says the team. "It's about providing a sense of
+                            purpose and a career path that respects where these men and women have come from while
+                            looking toward their future."
+                        </p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="https://www.fox44news.com/news/local-news/mclennan-county/hiring-our-veterans-a-story-from-the-trees/"
+                            target="_blank"
+                            class="text-hubspot font-bold uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2">
+                            Read Full Story <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="md:w-2/5 order-1 md:order-2 w-full">
+                    <div class="relative group pb-2 pr-2">
+                        <div class="absolute inset-0 border border-hubspot/40 translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                        <img src="https://texvettrees.com/wp-content/uploads/2026/02/IMG_9806.jpg"
+                            alt="Tex Vet Trees Veteran Team"
+                            class="relative z-10 w-full aspect-[4/3] md:aspect-auto md:h-[450px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl">
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- Newsletter CTA -->
+            <div class="text-center mt-20 reveal pt-12 border-t border-white/10">
+                <h3 class="font-display text-2xl font-bold uppercase mb-6 text-white">Want to stay updated?</h3>
+                <a href="./get-a-quote.html"
+                    class="btn-swipe inline-block bg-white text-black px-10 py-4 font-display font-bold text-lg uppercase tracking-wider hover:text-white transition-all duration-300">
+                    Join Our Newsletter
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+
+            <div class="text-center md:text-left flex items-center gap-2">
+                <img src="https://texvettrees.com/wp-content/uploads/2026/01/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png"
+                    alt="Tex Vet Trees Logo" class="h-8 w-auto grayscale opacity-50">
+                <span class="font-display font-bold text-xl uppercase text-white">Tex Vet Trees</span>
+                <p class="text-gray-500 text-sm mt-1 ml-2">© 2026. All Rights Reserved.</p>
+            </div>
+
+            <div class="flex gap-6">
+                <a href="https://www.facebook.com/p/Tex-Vet-Trees-Milling-Hire-Texas-Veterans-61558534992589/"
+                    target="_blank"
+                    class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300"
+                    title="Facebook">
+                    <i class="fa-brands fa-facebook text-xl"></i>
+                </a>
+                <a href="https://www.yelp.com/biz/tex-vet-trees-and-landscaping-waco" target="_blank"
+                    class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300"
+                    title="Yelp">
+                    <i class="fa-brands fa-yelp text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/texvettrees/" target="_blank"
+                    class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300"
+                    title="Instagram">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+                <a href="https://www.google.com/maps/place/Tex+Vet+Trees+%26+Landscaping/@31.704561,-97.263625,17z"
+                    target="_blank"
+                    class="text-gray-500 hover:text-white transition-colors hover:scale-110 transform duration-300"
+                    title="Google Maps">
+                    <i class="fa-brands fa-google text-xl"></i>
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 md:gap-8 text-center md:text-right items-center">
+                <div class="text-gray-500 text-sm font-sans">
+                    <i class="fa-solid fa-location-dot text-hubspot mr-2"></i>Business Location: 2080 Hamilton Drive,
+                    Waco, TX 76705
+                </div>
+                <a href="./work-with-us.html"
+                    class="text-gray-500 hover:text-hubspot text-sm transition-colors uppercase font-display tracking-wider">Work
+                    With Us</a>
+                <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors hover:underline">Privacy
+                    Policy</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Floating call button -->
+    <a href="tel:2544475090"
+        class="fixed bottom-6 right-6 z-50 bg-hubspot hover:bg-[#ff8f73] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg transition-all duration-300 transform hover:scale-110 group">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-hubspot opacity-20 animate-ping"></span>
+        <i class="fa-solid fa-phone group-hover:rotate-12 transition-transform"></i>
+    </a>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+
+</html>
