@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/Screenshot-2026-03-30-at-3.18.49-PM.png">
-    <link rel="apple-touch-icon" href="/Screenshot-2026-03-30-at-3.18.49-PM.png">
+    <link rel="icon" type="image/png" href="/public/Screenshot-2026-03-30-at-3.18.49-PM.png">
+    <link rel="apple-touch-icon" href="/public/Screenshot-2026-03-30-at-3.18.49-PM.png">
     <meta property="og:image" content="/Screenshot-2026-03-30-at-3.18.49-PM.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="/Screenshot-2026-03-30-at-3.18.49-PM.png">
@@ -38,7 +38,7 @@
                         'vet-gray': '#333333',
                     },
                     backgroundImage: {
-                        'hero-pattern': "url('/texvetsectionimage.jpg')",
+                        'hero-pattern': "url('/public/texvetsectionimage.jpg')",
                     },
                     animation: {
                         'shine': 'shine 3s linear infinite',
@@ -227,7 +227,7 @@
         <div class="absolute inset-0 bg-black/70 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/40 to-black"></div>
         <div class="absolute top-28 left-6 md:top-28 md:left-10 z-20 animate-fade-in-up hidden md:block">
             <a href="./index.html">
-                <img src="/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees and landscaping" class="w-20 md:w-36 h-auto drop-shadow-2xl">
+                <img src="/public/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees and landscaping" class="w-20 md:w-36 h-auto drop-shadow-2xl">
             </a>
         </div>
         <div class="relative z-10 container mx-auto px-6 text-center max-w-4xl pt-40 md:pt-40">
@@ -272,7 +272,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 <a href="./tree-service.html" x-data="{ showAfter: true }" class="reveal delay-100 group bg-zinc-900 border border-white/10 overflow-hidden hover:bg-zinc-800 transition-all duration-300 hover:border-hubspot block">
                     <div class="h-64 overflow-hidden relative">
-                        <img :src="showAfter ? '/texvettreeserviceafter.jpg' : '/texvettreeservicebefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
+                        <img :src="showAfter ? '/public/texvettreeserviceafter.jpg' : '/public/texvettreeservicebefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
                         <div class="absolute bottom-4 right-4 flex gap-2">
                             <button @click.prevent="showAfter = false" :class="!showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">Before</button>
                             <button @click.prevent="showAfter = true" :class="showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">After</button>
@@ -287,7 +287,7 @@
 
                 <a href="./landscaping.html" x-data="{ showAfter: true }" class="reveal delay-200 group bg-zinc-900 border border-white/10 overflow-hidden hover:bg-zinc-800 transition-all duration-300 hover:border-hubspot block">
                     <div class="h-64 overflow-hidden relative">
-                        <img :src="showAfter ? '/texvetlandscapingafter.jpeg' : '/texvetlandscapingbefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
+                        <img :src="showAfter ? '/public/texvetlandscapingafter.jpeg' : '/public/texvetlandscapingbefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
                         <div class="absolute bottom-4 right-4 flex gap-2">
                             <button @click.prevent="showAfter = false" :class="!showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">Before</button>
                             <button @click.prevent="showAfter = true" :class="showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">After</button>
@@ -302,7 +302,7 @@
 
                 <a href="./turf.html" x-data="{ showAfter: true }" class="reveal delay-100 group bg-zinc-900 border border-white/10 overflow-hidden hover:bg-zinc-800 transition-all duration-300 hover:border-hubspot block">
                     <div class="h-64 overflow-hidden relative">
-                        <img :src="showAfter ? '/texvetturfafter.jpg' : '/texvetturfbefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
+                        <img :src="showAfter ? '/public/texvetturfafter.jpg' : '/public/texvetturfbefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
                         <div class="absolute bottom-4 right-4 flex gap-2">
                             <button @click.prevent="showAfter = false" :class="!showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">Before</button>
                             <button @click.prevent="showAfter = true" :class="showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">After</button>
@@ -317,7 +317,7 @@
 
                 <a href="./hardscaping.html" x-data="{ showAfter: true }" class="reveal delay-200 group bg-zinc-900 border border-white/10 overflow-hidden hover:bg-zinc-800 transition-all duration-300 hover:border-hubspot block">
                     <div class="h-64 overflow-hidden relative">
-                        <img :src="showAfter ? '/texvethardscapingafter.png' : '/texvethardscapingbefore.png'" class="w-full h-full object-cover transition-opacity duration-500">
+                        <img :src="showAfter ? '/public/texvethardscapingafter.png' : '/public/texvethardscapingbefore.png'" class="w-full h-full object-cover transition-opacity duration-500">
                         <div class="absolute bottom-4 right-4 flex gap-2">
                             <button @click.prevent="showAfter = false" :class="!showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">Before</button>
                             <button @click.prevent="showAfter = true" :class="showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">After</button>
@@ -332,7 +332,7 @@
 
                 <a href="./fencing.html" x-data="{ showAfter: true }" class="reveal delay-100 group bg-zinc-900 border border-white/10 overflow-hidden hover:bg-zinc-800 transition-all duration-300 hover:border-hubspot block">
                     <div class="h-64 overflow-hidden relative">
-                        <img :src="showAfter ? '/texvetfencingafter.jpeg' : '/texvetfencingbefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
+                        <img :src="showAfter ? '/public/texvetfencingafter.jpeg' : '/public/texvetfencingbefore.jpg'" class="w-full h-full object-cover transition-opacity duration-500">
                         <div class="absolute bottom-4 right-4 flex gap-2">
                             <button @click.prevent="showAfter = false" :class="!showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">Before</button>
                             <button @click.prevent="showAfter = true" :class="showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">After</button>
@@ -347,7 +347,7 @@
 
                 <a href="https://texvettrees.com/decking-2/" x-data="{ showAfter: true }" class="reveal delay-200 group bg-zinc-900 border border-white/10 overflow-hidden hover:bg-zinc-800 transition-all duration-300 hover:border-hubspot block">
                     <div class="h-64 overflow-hidden relative">
-                        <img :src="showAfter ? '/texvetdeckingpatiosafter.jpg' : '/texvetdeckingpatiobefore.jpeg'" class="w-full h-full object-cover transition-opacity duration-500">
+                        <img :src="showAfter ? '/public/texvetdeckingpatiosafter.jpg' : '/public/texvetdeckingpatiobefore.jpeg'" class="w-full h-full object-cover transition-opacity duration-500">
                         <div class="absolute bottom-4 right-4 flex gap-2">
                             <button @click.prevent="showAfter = false" :class="!showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">Before</button>
                             <button @click.prevent="showAfter = true" :class="showAfter ? 'bg-hubspot' : 'bg-black/60'" class="px-3 py-1 text-xs uppercase font-bold tracking-widest text-white border border-white/20">After</button>
@@ -366,13 +366,13 @@
     <section id="about" class="relative overflow-hidden py-0 bg-black">
         <div class="w-full flex flex-col md:flex-row items-stretch h-auto">
             <div class="w-full md:w-1/4 bg-black relative h-[300px] md:h-auto z-20 my-[30px]">
-                 <img src="/Army-Vet-1-400x502-1.jpg" alt="US Army Veteran" class="h-full w-full object-contain">
+                 <img src="/public/Army-Vet-1-400x502-1.jpg" alt="US Army Veteran" class="h-full w-full object-contain">
             </div>
             <div class="w-full md:w-3/4 relative flex items-center pl-0">
                 <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center"></div>
                 <div class="absolute inset-0 bg-white/90"></div>
                 <div class="relative z-10 pl-6 pr-10 md:pl-16 py-10 md:py-16 flex flex-col items-start text-left justify-center h-full w-full">
-                     <img src="/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees and landscaping Logo" class="w-24 md:w-32 mb-6 invert">
+                     <img src="/public/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees and landscaping Logo" class="w-24 md:w-32 mb-6 invert">
                      <div class="flex items-center gap-2 mb-4 text-vet-gray font-bold uppercase tracking-widest text-xs">
                         <i class="fa-solid fa-flag-usa"></i> Richard Maddox, U.S. Army Veteran
                     </div>
@@ -396,10 +396,10 @@
         <button @click="next()" class="absolute right-0 top-0 bottom-0 w-12 z-20 bg-black/30 text-white"><i class="fa-solid fa-chevron-right"></i></button>
         <div class="overflow-hidden w-full">
             <div class="flex transition-transform duration-500 ease-in-out" :style="'transform: translateX(-' + (activeSlide * (100 / itemsVisible)) + '%)'">
-                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/469235845_122156927018284499_8107515471517870465_n.jpg" class="w-full h-full object-cover"></div>
-                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/IMG_9016.jpg" class="w-full h-full object-cover"></div>
-                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/6.jpg" class="w-full h-full object-cover"></div>
-                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/469596662_122157718418284499_8746053444392225084_n.jpg" class="w-full h-full object-cover"></div>
+                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/public/469235845_122156927018284499_8107515471517870465_n.jpg" class="w-full h-full object-cover"></div>
+                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/public/IMG_9016.jpg" class="w-full h-full object-cover"></div>
+                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/public/6.jpg" class="w-full h-full object-cover"></div>
+                <div class="flex-shrink-0 w-full md:w-1/4 aspect-square border-r border-white/10"><img src="/public/469596662_122157718418284499_8746053444392225084_n.jpg" class="w-full h-full object-cover"></div>
             </div>
         </div>
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -413,7 +413,7 @@
         <div class="w-full flex flex-col lg:flex-row min-h-screen">
             <div class="w-full lg:w-1/2 p-8 lg:p-20 flex flex-col justify-center">
                 <div class="reveal">
-                    <img src="/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees and landscaping" class="hidden md:block w-56 mb-8 opacity-80 invert filter grayscale">
+                    <img src="/public/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees and landscaping" class="hidden md:block w-56 mb-8 opacity-80 invert filter grayscale">
                     <h2 class="font-display text-5xl font-bold uppercase mb-6 leading-tight text-black">Get A Quote Today!</h2>
                     <p class="text-gray-600 text-lg leading-relaxed mb-4 md:mb-8">Looking for reliable tree care in Central to North Texas? We bring military discipline and precision to every job site.</p>
                     <ul class="hidden md:block space-y-4 mb-4">
@@ -432,9 +432,9 @@
                         </div>
                     </div>
                     <div class="mt-10 flex flex-wrap items-center gap-6 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
-                        <img src="/Waco-Camber-of-Commerce-PNG-200x74-1.png" alt="Waco Chamber" class="h-10 md:h-12 w-auto object-contain">
-                        <img src="/Veteran-Business-400x118-1.png" alt="Veteran Owned" class="h-10 md:h-12 w-auto object-contain">
-                        <img src="/bbb-trust-logo-3-400x162-1.webp" alt="BBB" class="h-12 md:h-14 w-auto object-contain">
+                        <img src="/public/Waco-Camber-of-Commerce-PNG-200x74-1.png" alt="Waco Chamber" class="h-10 md:h-12 w-auto object-contain">
+                        <img src="/public/Veteran-Business-400x118-1.png" alt="Veteran Owned" class="h-10 md:h-12 w-auto object-contain">
+                        <img src="/public/bbb-trust-logo-3-400x162-1.webp" alt="BBB" class="h-12 md:h-14 w-auto object-contain">
                     </div>
                 </div>
             </div>
@@ -448,7 +448,7 @@
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             
             <div class="text-center md:text-left flex items-center gap-2">
-                <img src="/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees Logo" class="h-8 w-auto grayscale opacity-50">
+                <img src="/public/Tex-Vet-Trees-Logo-Transparent-BG-200x120-1.png" alt="Tex Vet Trees Logo" class="h-8 w-auto grayscale opacity-50">
                 <span class="font-display font-bold text-xl uppercase text-white">Tex Vet Trees</span>
                 <p class="text-gray-500 text-sm mt-1 ml-2">© 2026. All Rights Reserved.</p>
             </div>
